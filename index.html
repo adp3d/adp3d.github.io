@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ADP3D Studio · Design to print</title>
-<meta name="description" content="ADP3D Studio is 3D design and print software for the Bambu Lab A1 Combo. Make a model from an idea, a photo or a ready tool, check it and send it to print. Most tools work without a graphics card.">
+<meta name="description" content="ADP3D Studio is 3D design and print software for your 3D printer. Make a model from an idea, a photo or a ready tool, check it and send it to print. Most tools work without a graphics card.">
 <meta property="og:title" content="ADP3D Studio">
 <meta property="og:description" content="Design to print. 3D design and print software that watches every step for quality.">
 <meta property="og:image" content="https://adp3d.com/og.png">
@@ -89,6 +89,22 @@ h2{font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.02em;margin:
 .checks li{padding:14px 0;border-bottom:1px solid var(--line);color:var(--sub);font-size:16px;display:flex;gap:12px}
 .checks li::before{content:"";flex:0 0 18px;height:6px;margin-top:9px;border-radius:3px;background:var(--aqua)}
 
+
+/* contact */
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
+.direct{margin-top:28px;display:flex;flex-direction:column;gap:10px;font-size:16px}
+.direct a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:10px}
+.direct a span{display:block;color:var(--dim);font-size:14px}
+form{display:grid;gap:18px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:grid;gap:7px;font-size:15px;color:var(--sub)}
+input,select,textarea{font:inherit;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;width:100%}
+textarea{min-height:140px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--aqua);outline-offset:1px;border-color:transparent}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--sub) 50%),linear-gradient(135deg,var(--sub) 50%,transparent 50%);background-position:calc(100% - 20px) 52%,calc(100% - 14px) 52%;background-size:6px 6px;background-repeat:no-repeat}
+form .btn{border:0;cursor:pointer;font-family:inherit;justify-self:start}
+.note{font-size:14px;color:var(--dim);margin:0}
+.err{color:#FF9DB0;font-size:14px;margin:0;min-height:1em}
 footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);font-size:15px}
 .foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
 .links a{color:var(--sub);text-decoration:none;margin-right:20px}
@@ -97,7 +113,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
 @media (max-width:860px){
   .flow{grid-template-columns:1fr 1fr;row-gap:32px}
   .tools{grid-template-columns:1fr 1fr}
-  .watch{grid-template-columns:1fr}
+  .watch,.contact{grid-template-columns:1fr}
 }
 @media (max-width:560px){
   body{font-size:17px}
@@ -105,7 +121,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
   nav a:not(:last-child){display:none}
   .hero{padding:64px 0}
   section{padding:64px 0}
-  .flow,.tools{grid-template-columns:1fr}
+  .flow,.tools,.row2{grid-template-columns:1fr}
   .flow li::before{right:0!important}
 }
 </style>
@@ -120,7 +136,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
     <nav aria-label="Main">
       <a href="#how">How it works</a>
       <a href="#tools">Tools</a>
-      <a href="#follow">Follow</a>
+      <a href="#contact">Contact us</a>
     </nav>
   </div>
 </header>
@@ -143,10 +159,10 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
         <rect class="nozzle" x="48" y="6" width="4" height="4" rx="2"/>
       </svg>
       <h1>ADP3D<small>Studio</small></h1>
-      <p class="tag">Design to print. From an idea to a finished part on your Bambu Lab A1 Combo.</p>
+      <p class="tag">Design to print. From an idea to a finished part on your 3D printer.</p>
       <div class="cta">
         <a class="btn main" href="https://www.youtube.com/@adp3d">Watch on YouTube</a>
-        <a class="btn ghost" href="#how">See how it works</a>
+        <a class="btn ghost" href="#contact">Contact us</a>
       </div>
       <p class="soon">First public release is on the way. Follow along to get it first.</p>
     </div>
@@ -159,7 +175,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
       <ol class="flow">
         <li><b>Design</b><p>Start from words, a photo, a sketch or one of the ready-made tools.</p></li>
         <li><b>Check</b><p>Thin walls, gaps, overhangs and loose pieces are found and fixed before printing.</p></li>
-        <li><b>Prepare</b><p>Supports, colours for the AMS and print settings are chosen for the A1 Combo.</p></li>
+        <li><b>Prepare</b><p>Supports, colours and print settings are chosen to suit your printer and filament.</p></li>
         <li><b>Print</b><p>Send the job and follow it. Problems are flagged while there is still time to fix them.</p></li>
       </ol>
     </div>
@@ -174,13 +190,13 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
         <div><h3>Ready-made parts</h3><p>Gears, nuts and bolts, jars with screw caps, Gridfinity bins and wall panels with exact sizes.</p></div>
         <div><h3>Name plates and stamps</h3><p>Text in English, Marathi or Hindi, keychains, stamps, stencils and QR plates.</p></div>
         <div><h3>Cookie cutters</h3><p>Pick a shape or use your own drawing, and get a cutter that prints cleanly.</p></div>
-        <div><h3>Multicolour printing</h3><p>Colour a design and it is split for the AMS, ready to print in several colours.</p></div>
+        <div><h3>Multicolour printing</h3><p>Colour a design and it is split by colour, ready for multi-colour printers such as Bambu Lab with AMS.</p></div>
         <div><h3>Export anywhere</h3><p>Save as STL or 3MF for printing, or DXF and SVG for laser and CNC work.</p></div>
       </div>
       <div class="chips" aria-label="Highlights">
         <span>Most tools work without a graphics card</span>
         <span>English, Marathi and Hindi</span>
-        <span>Made for Bambu Lab A1 Combo</span>
+        <span>Works with your 3D printer</span>
         <span>Built-in backup</span>
       </div>
     </div>
@@ -197,8 +213,40 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
         <li>Walls and details thick enough for the nozzle</li>
         <li>Fits the bed, or is split into parts that do</li>
         <li>Supports only where the part really needs them</li>
-        <li>Colours matched to the filament loaded in the AMS</li>
+        <li>Colours matched to the filament loaded in your printer</li>
       </ul>
+    </div>
+  </section>
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Tell us what you need</h2>
+        <p class="lead" style="margin-bottom:0">A part printed, a model designed, early access to the software or a bulk order. Write a few lines and we will reply within two working days.</p>
+        <div class="direct">
+          <a href="mailto:adp3d.studio@gmail.com"><span>Email</span>adp3d.studio@gmail.com</a>
+          <a href="https://www.instagram.com/adp3d.studio/"><span>Instagram message</span>@adp3d.studio</a>
+        </div>
+      </div>
+      <form id="cform" novalidate>
+        <div class="row2">
+          <label>Your name<input name="name" autocomplete="name" required></label>
+          <label>Phone or email<input name="reach" autocomplete="email" required></label>
+        </div>
+        <label>What do you need?
+          <select name="need">
+            <option>A part or object 3D printed</option>
+            <option>A 3D model designed</option>
+            <option>Early access to ADP3D Studio</option>
+            <option>Bulk or business order</option>
+            <option>Something else</option>
+          </select>
+        </label>
+        <label>Details<textarea name="msg" placeholder="What is it for, rough size, colour, how many, and by when" required></textarea></label>
+        <input name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <p class="err" id="cerr" role="alert"></p>
+        <button class="btn main" type="submit">Send request</button>
+        <p class="note">We use your details only to reply to this request.</p>
+      </form>
     </div>
   </section>
 </main>
@@ -217,5 +265,37 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
     </div>
   </div>
 </footer>
+<script>
+// Web3Forms access key (he public asli tari chalte). Key nasel tar form email app ughdto.
+var WEB3FORMS_KEY = 'PASTE_ACCESS_KEY_HERE';
+
+document.getElementById('cform').addEventListener('submit',function(e){
+  e.preventDefault();
+  var f=e.target, el=f.elements, err=document.getElementById('cerr'), btn=f.querySelector('button');
+  var name=el['name'].value.trim(), reach=el['reach'].value.trim(), need=el['need'].value, msg=el['msg'].value.trim();
+  if(!name||!reach||!msg){err.style.color='';err.textContent='Please fill in your name, how to reach you and the details.';return;}
+  if(el['website'].value){return;}
+  err.textContent='';
+  var subject='ADP3D request: '+need+' - '+name;
+  var body='Name: '+name+'\nContact: '+reach+'\nNeed: '+need+'\n\n'+msg;
+  var mailto='mailto:adp3d.studio@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+  if(WEB3FORMS_KEY.indexOf('PASTE')===0){location.href=mailto;return;}
+  var data={access_key:WEB3FORMS_KEY,subject:subject,from_name:'ADP3D website',name:name,contact:reach,need:need,message:msg};
+  if(reach.indexOf('@')>0){data.email=reach;}
+  btn.disabled=true;btn.textContent='Sending...';
+  fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)})
+    .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j};});})
+    .then(function(res){
+      if(!res.ok||res.j.success===false){throw new Error(res.j.message||'failed');}
+      f.reset();err.style.color='var(--mint)';
+      err.textContent='Thank you, '+name+'. Your request has reached us. We will reply within two working days.';
+    })
+    .catch(function(){
+      err.style.color='';
+      err.innerHTML='The message could not be sent. Please <a href="'+mailto.replace(/"/g,'&quot;')+'">send it by email</a> instead.';
+    })
+    .then(function(){btn.disabled=false;btn.textContent='Send request';});
+});
+</script>
 </body>
 </html>
