@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ADP3D Studio · Design to print</title>
+<meta name="description" content="ADP3D Studio is 3D design and print software for the Bambu Lab A1 Combo. Make a model from an idea, a photo or a ready tool, check it and send it to print. Most tools work without a graphics card.">
+<meta property="og:title" content="ADP3D Studio">
+<meta property="og:description" content="Design to print. 3D design and print software that watches every step for quality.">
+<meta property="og:image" content="https://adp3d.com/og.png">
+<meta property="og:url" content="https://adp3d.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#060A1C">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#060A1C; --bg:#0A1030; --line:#1B2550;
+  --ink:#FFFFFF; --sub:#B6C4F0; --dim:#7D8BBE;
+  --mint:#B8FFF2; --aqua:#3DE0FF; --blue:#2F9BFF; --indigo:#3B4BFF; --studio:#9FE6FF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--ink);font-family:"Inter Tight",Inter,system-ui,sans-serif;font-size:18px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--aqua)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--aqua);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* top bar */
+header{position:sticky;top:0;z-index:5;background:rgba(6,10,28,.82);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:800;font-size:20px;letter-spacing:-.01em}
+.brand span{font-weight:400;color:var(--studio);font-size:15px}
+.brand svg{width:30px;height:30px}
+nav a{color:var(--sub);text-decoration:none;margin-left:22px;font-size:15px}
+nav a:hover{color:var(--ink)}
+
+/* hero: the mark prints itself, layer by layer */
+.hero{position:relative;overflow:hidden;padding:96px 0 88px;text-align:center;
+  background:radial-gradient(ellipse 60% 55% at 50% 42%,#14306A 0%,var(--night) 70%)}
+.mark{width:min(300px,62vw);height:auto;display:block;margin:0 auto 28px;overflow:visible}
+.mark rect{transform-box:fill-box;transform-origin:center bottom}
+.nozzle{fill:var(--mint);opacity:0}
+@media (prefers-reduced-motion:no-preference){
+  .mark rect.layer{opacity:0;animation:lay .32s cubic-bezier(.2,.8,.2,1) forwards}
+  .nozzle{animation:noz 3.4s ease-in-out forwards}
+}
+@keyframes lay{from{opacity:0;transform:scaleX(.15)}to{opacity:1;transform:none}}
+@keyframes noz{0%{opacity:1;transform:translateY(64px)}88%{opacity:1;transform:translateY(-4px)}100%{opacity:0;transform:translateY(-14px)}}
+h1{margin:0;font-weight:800;font-size:clamp(48px,9vw,96px);line-height:1;letter-spacing:-.03em}
+h1 small{display:block;font-weight:400;font-size:.36em;color:var(--studio);letter-spacing:0;margin-top:10px}
+.tag{margin:22px auto 0;max-width:34ch;color:var(--sub);font-size:clamp(18px,2.4vw,22px)}
+.cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:36px}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:500;text-decoration:none;font-size:16px}
+.btn.main{background:linear-gradient(90deg,var(--aqua),var(--blue));color:var(--night)}
+.btn.ghost{border:1px solid var(--line);color:var(--ink)}
+.btn:hover{filter:brightness(1.1)}
+.soon{margin-top:22px;font-size:14px;color:var(--dim)}
+
+section{padding:88px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.15;letter-spacing:-.02em;margin:0 0 14px;font-weight:800}
+.lead{color:var(--sub);max-width:60ch;margin:0 0 44px}
+
+/* the pipeline is a real sequence, so it is numbered */
+.flow{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;counter-reset:s}
+.flow li{position:relative;padding:26px 22px 0 0;counter-increment:s}
+.flow li::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;border-radius:3px}
+.flow li:nth-child(1)::before{background:var(--mint)}
+.flow li:nth-child(2)::before{background:var(--aqua)}
+.flow li:nth-child(3)::before{background:var(--blue)}
+.flow li:nth-child(4)::before{background:var(--indigo)}
+.flow li:not(:last-child)::before{right:10px}
+.flow b{display:block;font-size:20px;margin-bottom:6px}
+.flow b::before{content:counter(s) ". ";color:var(--dim);font-weight:500}
+.flow p{margin:0;color:var(--sub);font-size:16px}
+
+.tools{display:grid;grid-template-columns:repeat(3,1fr);gap:40px 36px}
+.tools h3{margin:0 0 6px;font-size:19px}
+.tools p{margin:0;color:var(--sub);font-size:16px}
+
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.chips span{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:15px;color:var(--sub)}
+
+.watch{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.checks{list-style:none;margin:0;padding:0}
+.checks li{padding:14px 0;border-bottom:1px solid var(--line);color:var(--sub);font-size:16px;display:flex;gap:12px}
+.checks li::before{content:"";flex:0 0 18px;height:6px;margin-top:9px;border-radius:3px;background:var(--aqua)}
+
+footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);font-size:15px}
+.foot{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.links a{color:var(--sub);text-decoration:none;margin-right:20px}
+.links a:hover{color:var(--ink)}
+
+@media (max-width:860px){
+  .flow{grid-template-columns:1fr 1fr;row-gap:32px}
+  .tools{grid-template-columns:1fr 1fr}
+  .watch{grid-template-columns:1fr}
+}
+@media (max-width:560px){
+  body{font-size:17px}
+  .wrap{padding:0 16px}
+  nav a:not(:last-child){display:none}
+  .hero{padding:64px 0}
+  section{padding:64px 0}
+  .flow,.tools{grid-template-columns:1fr}
+  .flow li::before{right:0!important}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="ADP3D Studio home">
+      <svg viewBox="0 0 100 100" aria-hidden="true"><rect x="44" y="17" width="12" height="6" rx="3" fill="#B8FFF2"/><rect x="38" y="27" width="24" height="6" rx="3" fill="#3DE0FF"/><rect x="32" y="37" width="36" height="6" rx="3" fill="#3DE0FF"/><rect x="26" y="47" width="48" height="6" rx="3" fill="#2F9BFF"/><rect x="20" y="57" width="22" height="6" rx="3" fill="#2F9BFF"/><rect x="58" y="57" width="22" height="6" rx="3" fill="#2F9BFF"/><rect x="14" y="67" width="24" height="6" rx="3" fill="#3B4BFF"/><rect x="62" y="67" width="24" height="6" rx="3" fill="#3B4BFF"/><rect x="8" y="77" width="26" height="6" rx="3" fill="#3B4BFF"/><rect x="66" y="77" width="26" height="6" rx="3" fill="#3B4BFF"/></svg>
+      ADP3D <span>Studio</span>
+    </a>
+    <nav aria-label="Main">
+      <a href="#how">How it works</a>
+      <a href="#tools">Tools</a>
+      <a href="#follow">Follow</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <!-- bottom layers first, like a real print -->
+      <svg class="mark" viewBox="0 0 100 100" role="img" aria-label="ADP3D layered A logo">
+        <rect class="layer" style="animation-delay:.10s" x="8"  y="77" width="26" height="6" rx="3" fill="#3B4BFF"/>
+        <rect class="layer" style="animation-delay:.22s" x="66" y="77" width="26" height="6" rx="3" fill="#3B4BFF"/>
+        <rect class="layer" style="animation-delay:.48s" x="14" y="67" width="24" height="6" rx="3" fill="#3B4BFF"/>
+        <rect class="layer" style="animation-delay:.60s" x="62" y="67" width="24" height="6" rx="3" fill="#3B4BFF"/>
+        <rect class="layer" style="animation-delay:.86s" x="20" y="57" width="22" height="6" rx="3" fill="#2F9BFF"/>
+        <rect class="layer" style="animation-delay:.98s" x="58" y="57" width="22" height="6" rx="3" fill="#2F9BFF"/>
+        <rect class="layer" style="animation-delay:1.30s" x="26" y="47" width="48" height="6" rx="3" fill="#2F9BFF"/>
+        <rect class="layer" style="animation-delay:1.70s" x="32" y="37" width="36" height="6" rx="3" fill="#3DE0FF"/>
+        <rect class="layer" style="animation-delay:2.10s" x="38" y="27" width="24" height="6" rx="3" fill="#3DE0FF"/>
+        <rect class="layer" style="animation-delay:2.50s" x="44" y="17" width="12" height="6" rx="3" fill="#B8FFF2"/>
+        <rect class="nozzle" x="48" y="6" width="4" height="4" rx="2"/>
+      </svg>
+      <h1>ADP3D<small>Studio</small></h1>
+      <p class="tag">Design to print. From an idea to a finished part on your Bambu Lab A1 Combo.</p>
+      <div class="cta">
+        <a class="btn main" href="https://www.youtube.com/@adp3d">Watch on YouTube</a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <p class="soon">First public release is on the way. Follow along to get it first.</p>
+    </div>
+  </div>
+
+  <section id="how">
+    <div class="wrap">
+      <h2>One app, from design to print</h2>
+      <p class="lead">You describe what you want. ADP3D Studio builds the model, checks it, prepares it for your printer and keeps an eye on every step so the part comes out right.</p>
+      <ol class="flow">
+        <li><b>Design</b><p>Start from words, a photo, a sketch or one of the ready-made tools.</p></li>
+        <li><b>Check</b><p>Thin walls, gaps, overhangs and loose pieces are found and fixed before printing.</p></li>
+        <li><b>Prepare</b><p>Supports, colours for the AMS and print settings are chosen for the A1 Combo.</p></li>
+        <li><b>Print</b><p>Send the job and follow it. Problems are flagged while there is still time to fix them.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="tools">
+    <div class="wrap">
+      <h2>Tools that do the hard part</h2>
+      <p class="lead">Each tool makes a print-ready model in seconds. Change a few numbers, see it update, print.</p>
+      <div class="tools">
+        <div><h3>Idea to 3D</h3><p>Turn a photo or a written idea into a 3D model you can edit. This tool runs on a graphics card when you have one.</p></div>
+        <div><h3>Ready-made parts</h3><p>Gears, nuts and bolts, jars with screw caps, Gridfinity bins and wall panels with exact sizes.</p></div>
+        <div><h3>Name plates and stamps</h3><p>Text in English, Marathi or Hindi, keychains, stamps, stencils and QR plates.</p></div>
+        <div><h3>Cookie cutters</h3><p>Pick a shape or use your own drawing, and get a cutter that prints cleanly.</p></div>
+        <div><h3>Multicolour printing</h3><p>Colour a design and it is split for the AMS, ready to print in several colours.</p></div>
+        <div><h3>Export anywhere</h3><p>Save as STL or 3MF for printing, or DXF and SVG for laser and CNC work.</p></div>
+      </div>
+      <div class="chips" aria-label="Highlights">
+        <span>Most tools work without a graphics card</span>
+        <span>English, Marathi and Hindi</span>
+        <span>Made for Bambu Lab A1 Combo</span>
+        <span>Built-in backup</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap watch">
+      <div>
+        <h2>It watches every step for quality</h2>
+        <p class="lead" style="margin-bottom:0">Most failed prints start with a problem nobody saw. ADP3D Studio checks the model, the settings and the plate before anything reaches the printer, and tells you in plain words what it found.</p>
+      </div>
+      <ul class="checks">
+        <li>Closed, solid model with no holes or broken faces</li>
+        <li>Walls and details thick enough for the nozzle</li>
+        <li>Fits the bed, or is split into parts that do</li>
+        <li>Supports only where the part really needs them</li>
+        <li>Colours matched to the filament loaded in the AMS</li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer id="follow">
+  <div class="wrap foot">
+    <div>
+      <div class="brand" style="margin-bottom:10px">ADP3D <span>Studio</span></div>
+      Made in Maharashtra by Ajay Dilip Pawar.<br>
+      <a href="mailto:adp3d.studio@gmail.com">adp3d.studio@gmail.com</a>
+    </div>
+    <div class="links">
+      <a href="https://www.youtube.com/@adp3d">YouTube</a>
+      <a href="https://www.instagram.com/adp3d.studio/">Instagram</a>
+      <a href="https://github.com/adp3d">GitHub</a>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
