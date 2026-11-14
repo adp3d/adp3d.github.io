@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://api.web3forms.com; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>ADP3D Studio · Design to print</title>
 <meta name="description" content="ADP3D Studio is 3D design and print software for your 3D printer. Make a model from an idea, a photo or a ready tool, check it and send it to print. Most tools work without a graphics card.">
 <meta property="og:title" content="ADP3D Studio">
@@ -259,7 +261,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
       <a href="mailto:adp3d.studio@gmail.com">adp3d.studio@gmail.com</a>
     </div>
     <div class="links">
-      <a href="https://www.youtube.com/@adp3d">YouTube</a>
+      <a href="https://www.youtube.com/@adp3d" rel="noopener">YouTube</a>
       <a href="https://www.instagram.com/adp3d.studio/">Instagram</a>
       <a href="https://github.com/adp3d">GitHub</a>
     </div>
@@ -267,7 +269,7 @@ footer{border-top:1px solid var(--line);padding:56px 0 64px;color:var(--dim);fon
 </footer>
 <script>
 // Web3Forms access key (he public asli tari chalte). Key nasel tar form email app ughdto.
-var WEB3FORMS_KEY = '71e76ed2-316a-4096-8653-2a887e8f3379';
+var WEB3FORMS_KEY = 'PASTE_ACCESS_KEY_HERE';
 
 document.getElementById('cform').addEventListener('submit',function(e){
   e.preventDefault();
